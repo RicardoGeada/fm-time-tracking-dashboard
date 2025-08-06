@@ -1,0 +1,81 @@
+@use 'sass:map';
+
+/* rubik-300 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../assets/fonts/rubik-v30-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* rubik-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/rubik-v30-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* rubik-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../assets/fonts/rubik-v30-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+$text-presets: (
+    "1": (
+        weight: 300,
+        size: 3.5rem,           // 56px
+        line-height: 4.125rem,  // 66px
+        letter-spacing: 0rem,   // 0px
+    ),
+    "2": (
+        weight: 300,
+        size: 2.5rem,           // 40px
+        line-height: 2.9375rem, // 47px
+        letter-spacing: 0rem,   // 0px
+    ),
+    "3": (
+        weight: 300,
+        size: 2rem,             // 32px
+        line-height: 2.375rem,  // 38px
+        letter-spacing: 0rem,   // 0px
+    ),
+    "4": (
+        weight: 300,
+        size: 1.5rem,           // 24px
+        line-height: 1.75rem,   // 28px
+        letter-spacing: 0rem,   // 0px
+    ),
+    "5--medium": (
+        weight: 500,
+        size: 1.125rem,         // 18px
+        line-height: 1.3125rem, // 21px
+        letter-spacing: 0rem,   // 0px
+    ),
+    "5": (
+        weight: 400,
+        size: 1.125rem,         // 18px
+        line-height: 1.3125rem, // 21px
+        letter-spacing: 0rem,   // 0px
+    ),
+    "6": (
+        weight: 400,
+        size: 0.9375rem,        // 15px
+        line-height: 1.125rem,  // 18px
+        letter-spacing: 0rem,   // 0px
+    ),
+);
+
+@mixin apply-text-preset($name) {
+    $preset: map.get($text-presets, $name);
+    @if $preset {
+        font-size: map.get($preset, size);
+        font-weight: map.get($preset, weight);
+        line-height: map.get($preset, line-height);
+        letter-spacing: map.get($preset, letter-spacing);
+    }
+}

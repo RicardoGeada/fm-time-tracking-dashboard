@@ -1,3 +1,5 @@
+@use "./styles/fonts.scss";
+
 :root {
     // === colors ===
     --color-white: #ffffff;
@@ -29,4 +31,5 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: "Rubik", Arial, Helvetica, sans-serif;
 }
