@@ -1,7 +1,119 @@
+/* rubik-300 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../assets/fonts/rubik-v30-latin-300.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* rubik-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/rubik-v30-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* rubik-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../assets/fonts/rubik-v30-latin-500.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+:root {
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-navy-950: #0e1323;
+  --color-navy-900: #1c204b;
+  --color-navy-800: #33397a;
+  --color-navy-200: #bbc0ff;
+  --color-orange-300: #ff8b64;
+  --color-purple-700: #7335d2;
+  --color-purple-600: #5747ea;
+  --color-purple-500: #7078c9;
+  --color-blue-300: #55c2e6;
+  --color-pink-400: #ff5e7d;
+  --color-green-400: #4bcf82;
+  --color-yellow-900: #f1c75b;
+  --color-grey-200: #d8d8d8;
+  --spacing-0: 0px;
+  --spacing-100: 0.5rem;
+  --spacing-200: 1.0rem;
+  --spacing-300: 1.5rem;
+  --spacing-400: 2.0rem;
+  --spacing-500: 2.5rem;
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Rubik", Arial, Helvetica, sans-serif;
+}
+
+main {
+  background-color: var(--color-navy-950);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard__user-panel {
+  background-color: var(--color-navy-900);
+  border-radius: 0.9375rem;
+}
+.dashboard__user {
+  background-color: var(--color-purple-600);
+  border-radius: 0.9375rem;
+  padding: var(--spacing-400);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-300);
+}
+.dashboard__user-img {
+  width: 4rem;
+  aspect-ratio: 1/1;
+  border: 3px solid var(--color-white);
+  border-radius: 100%;
+}
+.dashboard__user-label {
+  margin-bottom: var(--spacing-100);
+  color: var(--color-navy-200);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.125rem;
+  letter-spacing: 0rem;
+}
+.dashboard__user-name {
+  color: var(--color-white);
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.75rem;
+  letter-spacing: 0rem;
+}
+.dashboard__menu {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.dashboard__menu-button {
+  flex-basis: 33.3%;
+  flex-grow: 1;
+  background-color: transparent;
+  border: transparent;
+  padding: var(--spacing-300) 0;
+  cursor: pointer;
+  color: var(--color-purple-500);
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.3125rem;
+  letter-spacing: 0rem;
+}
+.dashboard__menu-button[aria-selected=true] {
+  color: var(--color-white);
 }
 
 /*# sourceMappingURL=style.css.map */

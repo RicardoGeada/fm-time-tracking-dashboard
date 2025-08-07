@@ -16,31 +16,31 @@
 
     <aside class="dashboard__user-panel">
       <div class="dashboard__user">
-        <img src="./images/image-jeremy.png" alt="Jeremy Robson">
+        <img class="dashboard__user-img" src="./assets/images/image-jeremy.png" alt="Jeremy Robson">
         <div>
           <p class="dashboard__user-label">Report for</p>
           <h1 class="dashboard__user-name">Jeremy Robson</h1>
         </div>
       </div>
-      <nav class="dashboard__menu">
-        <button type="button" aria-pressed="true">Daily</button>
-        <button type="button" aria-pressed="false">Weekly</button>
-        <button type="button" aria-pressed="false">Monthly</button>
+      <nav class="dashboard__menu" role="tablist">
+        <button class="dashboard__menu-button" role="tab" type="button" aria-selected="false">Daily</button>
+        <button class="dashboard__menu-button" role="tab" type="button" aria-selected="true">Weekly</button>
+        <button class="dashboard__menu-button" role="tab" type="button" aria-selected="false">Monthly</button>
       </nav>
     </aside>
 
-    <div class="dashboard__grid">
+    <div class="dashboard__grid" role="tabpanel">
 
       <!-- Work -->
       <article class="time-card">
         <div class="time-card__tag">
-          <img src="./images//icon-work.svg" alt="">
+          <img src="./assets/images/icon-work.svg" alt="">
         </div>
         <div class="time-card__info">
           <header class="time-card__category">
             <h2>Work</h2>
             <button aria-label="Options">
-              <img src="./images/icon-ellipsis.svg" alt="">
+              <img src="./assets/images/icon-ellipsis.svg" alt="">
             </button>
           </header>
           <div class="time-card__time">32hrs</div>
