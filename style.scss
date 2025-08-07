@@ -46,6 +46,11 @@ main {
 
 
 .dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-300);
+
+    // === user-panel ===
 
     &__user-panel {
         background-color: var(--color-navy-900);
@@ -98,5 +103,92 @@ main {
         &[aria-selected="true"] {
             color: var(--color-white);
         }
+    }
+
+
+
+    // === grid ===
+
+    &__grid {
+        display: grid;
+        gap: var(--spacing-300);
+    }
+}
+
+.time-card {
+    border-radius: 0.9375rem;
+    position: relative;
+    overflow: hidden;
+
+    &--work {
+        background-color: var(--color-orange-300);
+    }
+
+    &--play {
+        background-color: var(--color-blue-300);
+    }
+
+    &--study {
+        background-color: var(--color-pink-400);
+    }
+
+    &--exercise {
+        background-color: var(--color-green-400);
+    }
+
+    &--social {
+        background-color: var(--color-purple-700);
+    }
+
+    &--self-care {
+        background-color: var(--color-yellow-900);
+    }
+
+    &__tag {
+        position: absolute;
+        right: var(--spacing-200);
+        top: -12px;
+    }
+
+    &__info {
+        margin-top: 38px;
+        background-color: var(--color-navy-900);
+        position: relative;
+        padding: var(--spacing-300);
+        border-radius:  0.9375rem;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--spacing-100);
+    }
+
+    &__category {
+        color: var(--color-white);
+        @include fonts.apply-text-preset("5--medium");
+    }
+
+    &__options-button {
+        background-color: transparent;
+        border: transparent;
+        cursor: pointer;
+    }
+
+    &__time-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__time {
+        color: var(--color-white);
+        @include fonts.apply-text-preset("3");
+    }
+
+    &__past-time {
+        color: var(--color-navy-200);
+        @include fonts.apply-text-preset("6");
     }
 }
