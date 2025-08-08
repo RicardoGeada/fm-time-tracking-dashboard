@@ -29,7 +29,7 @@
       </nav>
     </aside>
 
-    <div class="dashboard__grid" role="tabpanel">
+    <div id="dashboardGrid" class="dashboard__grid dashboard__grid--weekly" role="tabpanel">
 
       <!-- Work -->
       <article class="time-card time-card--work">
@@ -44,8 +44,16 @@
             </button>
           </header>
           <div class="time-card__time-container">
-            <div class="time-card__time">32hrs</div>
-            <div class="time-card__past-time">Last week - 36hrs</div>
+            <div class="time-card__time">
+              <span data-time="daily">5hrs</span>
+              <span data-time="weekly">32hrs</span>
+              <span data-time="monthly">103hrs</span>
+            </div>
+            <div class="time-card__past-time">
+              <span data-time="daily">Yesterday - 7hrs</span>
+              <span data-time="weekly">Last week - 36hrs</span>
+              <span data-time="monthly">Last month - 128hrs</span>
+            </div>
           </div>
         </div>
       </article>

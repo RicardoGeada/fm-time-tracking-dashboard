@@ -1,194 +1,199 @@
 @use "./styles/fonts.scss";
 
 :root {
-    // === colors ===
-    --color-white: #ffffff;
-    --color-black: #000000;
-    --color-navy-950: #0e1323;
-    --color-navy-900: #1c204b;
-    --color-navy-800: #33397a;
-    --color-navy-200: #bbc0ff;
-    --color-orange-300: #ff8b64;
-    --color-purple-700: #7335d2;
-    --color-purple-600: #5747ea;
-    --color-purple-500: #7078c9;
-    --color-blue-300: #55c2e6;
-    --color-pink-400: #ff5e7d;
-    --color-green-400: #4bcf82;
-    --color-yellow-900: #f1c75b;
-    --color-grey-200: #d8d8d8;
+  // === colors ===
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-navy-950: #0e1323;
+  --color-navy-900: #1c204b;
+  --color-navy-800: #33397a;
+  --color-navy-200: #bbc0ff;
+  --color-orange-300: #ff8b64;
+  --color-purple-700: #7335d2;
+  --color-purple-600: #5747ea;
+  --color-purple-500: #7078c9;
+  --color-blue-300: #55c2e6;
+  --color-pink-400: #ff5e7d;
+  --color-green-400: #4bcf82;
+  --color-yellow-900: #f1c75b;
+  --color-grey-200: #d8d8d8;
 
-    // === spacing ===
-    --spacing-0: 0px;
-    --spacing-100: 0.5rem; // 8px
-    --spacing-200: 1.0rem; // 16px
-    --spacing-300: 1.5rem; // 24px
-    --spacing-400: 2.0rem; // 32px
-    --spacing-500: 2.5rem; // 40px
+  // === spacing ===
+  --spacing-0: 0px;
+  --spacing-100: 0.5rem; // 8px
+  --spacing-200: 1rem; // 16px
+  --spacing-300: 1.5rem; // 24px
+  --spacing-400: 2rem; // 32px
+  --spacing-500: 2.5rem; // 40px
 }
-
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Rubik", Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Rubik", Arial, Helvetica, sans-serif;
 }
-
 
 main {
-    background-color: var(--color-navy-950);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: var(--color-navy-950);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-
 .dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-300);
+
+  // === user-panel ===
+
+  &__user-panel {
+    background-color: var(--color-navy-900);
+    border-radius: 0.9375rem; // 15px
+  }
+
+  &__user {
+    background-color: var(--color-purple-600);
+    border-radius: 0.9375rem;
+    padding: var(--spacing-400);
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-300);
+  }
+
+  &__user-img {
+    width: 4rem;
+    aspect-ratio: 1 / 1;
+    border: 3px solid var(--color-white);
+    border-radius: 100%;
+  }
+
+  &__user-label {
+    margin-bottom: var(--spacing-100);
+    color: var(--color-navy-200);
+    @include fonts.apply-text-preset("6");
+  }
+
+  &__user-name {
+    color: var(--color-white);
+    @include fonts.apply-text-preset("4");
+  }
+
+  &__menu {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  &__menu-button {
+    flex-basis: 33.3%;
+    flex-grow: 1;
+    background-color: transparent;
+    border: transparent;
+    padding: var(--spacing-300) 0;
+    cursor: pointer;
+    color: var(--color-purple-500);
+    @include fonts.apply-text-preset("5");
+
+    &[aria-selected="true"] {
+      color: var(--color-white);
+    }
+  }
+
+  // === grid ===
+
+  &__grid {
+    display: grid;
     gap: var(--spacing-300);
 
-    // === user-panel ===
-
-    &__user-panel {
-        background-color: var(--color-navy-900);
-        border-radius: 0.9375rem; // 15px
+    *[data-time] {
+    display: none;
     }
 
-    &__user {
-        background-color: var(--color-purple-600);
-        border-radius: 0.9375rem;
-        padding: var(--spacing-400);
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-300);
+    &--daily [data-time="daily"],
+    &--weekly [data-time="weekly"],
+    &--monthly [data-time="monthly"] {
+      display: inline;
     }
-
-    &__user-img {
-        width: 4.0rem;
-        aspect-ratio: 1 / 1;
-        border: 3px solid var(--color-white);
-        border-radius: 100%;
-    }
-
-    &__user-label {
-        margin-bottom: var(--spacing-100);
-        color: var(--color-navy-200);
-        @include fonts.apply-text-preset("6");
-    }
-
-    &__user-name {
-        color: var(--color-white);
-        @include fonts.apply-text-preset("4");
-    }
-
-    &__menu {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-    }
-
-    &__menu-button {
-        flex-basis: 33.3%;
-        flex-grow: 1;
-        background-color: transparent;
-        border: transparent;
-        padding: var(--spacing-300) 0;
-        cursor: pointer;
-        color: var(--color-purple-500);
-        @include fonts.apply-text-preset("5");
-
-        &[aria-selected="true"] {
-            color: var(--color-white);
-        }
-    }
-
-
-
-    // === grid ===
-
-    &__grid {
-        display: grid;
-        gap: var(--spacing-300);
-    }
+  }
 }
 
 .time-card {
-    border-radius: 0.9375rem;
+  border-radius: 0.9375rem;
+  position: relative;
+  overflow: hidden;
+
+  &--work {
+    background-color: var(--color-orange-300);
+  }
+
+  &--play {
+    background-color: var(--color-blue-300);
+  }
+
+  &--study {
+    background-color: var(--color-pink-400);
+  }
+
+  &--exercise {
+    background-color: var(--color-green-400);
+  }
+
+  &--social {
+    background-color: var(--color-purple-700);
+  }
+
+  &--self-care {
+    background-color: var(--color-yellow-900);
+  }
+
+  &__tag {
+    position: absolute;
+    right: var(--spacing-200);
+    top: -12px;
+  }
+
+  &__info {
+    margin-top: 38px;
+    background-color: var(--color-navy-900);
     position: relative;
-    overflow: hidden;
+    padding: var(--spacing-300);
+    border-radius: 0.9375rem;
+  }
 
-    &--work {
-        background-color: var(--color-orange-300);
-    }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-100);
+  }
 
-    &--play {
-        background-color: var(--color-blue-300);
-    }
+  &__category {
+    color: var(--color-white);
+    @include fonts.apply-text-preset("5--medium");
+  }
 
-    &--study {
-        background-color: var(--color-pink-400);
-    }
+  &__options-button {
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+  }
 
-    &--exercise {
-        background-color: var(--color-green-400);
-    }
+  &__time-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-    &--social {
-        background-color: var(--color-purple-700);
-    }
+  &__time {
+    color: var(--color-white);
+    @include fonts.apply-text-preset("3");
+  }
 
-    &--self-care {
-        background-color: var(--color-yellow-900);
-    }
-
-    &__tag {
-        position: absolute;
-        right: var(--spacing-200);
-        top: -12px;
-    }
-
-    &__info {
-        margin-top: 38px;
-        background-color: var(--color-navy-900);
-        position: relative;
-        padding: var(--spacing-300);
-        border-radius:  0.9375rem;
-    }
-
-    &__header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: var(--spacing-100);
-    }
-
-    &__category {
-        color: var(--color-white);
-        @include fonts.apply-text-preset("5--medium");
-    }
-
-    &__options-button {
-        background-color: transparent;
-        border: transparent;
-        cursor: pointer;
-    }
-
-    &__time-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    &__time {
-        color: var(--color-white);
-        @include fonts.apply-text-preset("3");
-    }
-
-    &__past-time {
-        color: var(--color-navy-200);
-        @include fonts.apply-text-preset("6");
-    }
+  &__past-time {
+    color: var(--color-navy-200);
+    @include fonts.apply-text-preset("6");
+  }
 }

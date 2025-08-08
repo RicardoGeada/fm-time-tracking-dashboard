@@ -40,9 +40,9 @@
   --color-grey-200: #d8d8d8;
   --spacing-0: 0px;
   --spacing-100: 0.5rem;
-  --spacing-200: 1.0rem;
+  --spacing-200: 1rem;
   --spacing-300: 1.5rem;
-  --spacing-400: 2.0rem;
+  --spacing-400: 2rem;
   --spacing-500: 2.5rem;
 }
 
@@ -123,6 +123,12 @@ main {
 .dashboard__grid {
   display: grid;
   gap: var(--spacing-300);
+}
+.dashboard__grid *[data-time] {
+  display: none;
+}
+.dashboard__grid--daily [data-time=daily], .dashboard__grid--weekly [data-time=weekly], .dashboard__grid--monthly [data-time=monthly] {
+  display: inline;
 }
 
 .time-card {
