@@ -6,6 +6,8 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="style.css">
+
+  <script src="./script.js" defer></script>
   
   <title>Frontend Mentor | Time tracking dashboard</title>
 
@@ -23,9 +25,9 @@
         </div>
       </div>
       <nav class="dashboard__menu" role="tablist">
-        <button class="dashboard__menu-button" role="tab" type="button" aria-selected="false">Daily</button>
-        <button class="dashboard__menu-button" role="tab" type="button" aria-selected="true">Weekly</button>
-        <button class="dashboard__menu-button" role="tab" type="button" aria-selected="false">Monthly</button>
+        <button class="dashboard__menu-button" role="tab" type="button" data-mode="daily" aria-selected="false">Daily</button>
+        <button class="dashboard__menu-button" role="tab" type="button" data-mode="weekly" aria-selected="true">Weekly</button>
+        <button class="dashboard__menu-button" role="tab" type="button" data-mode="monthly" aria-selected="false">Monthly</button>
       </nav>
     </aside>
 
