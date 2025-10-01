@@ -25,6 +25,7 @@
   --spacing-300: 1.5rem; // 24px
   --spacing-400: 2rem; // 32px
   --spacing-500: 2.5rem; // 40px
+  --spacing-1000: 5rem; // 80px
 }
 
 * {
@@ -40,6 +41,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: var(--spacing-1000) var(--spacing-300);
 }
 
 .dashboard {
@@ -126,7 +128,7 @@ main {
   overflow: hidden;
 
   &--work {
-    background-color: var(--color-orange-300);
+    background: var(--color-orange-300);
   }
 
   &--play {
@@ -139,6 +141,9 @@ main {
 
   &--exercise {
     background-color: var(--color-green-400);
+    .time-card__tag {
+      top: 0;
+    }
   }
 
   &--social {
@@ -195,5 +200,92 @@ main {
   &__past-time {
     color: var(--color-navy-200);
     @include fonts.apply-text-preset("6");
+  }
+}
+
+@media (min-width: 48em) {
+  .dashboard {
+    &__grid {
+      grid-template-rows: repeat(3, 1fr);
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .time-card {
+    width: 220px;
+
+    &__info {
+      margin-top: 33px;
+    }
+
+    &__header {
+      margin-bottom: var(--spacing-200);
+    }
+
+    &__time-container {
+      flex-direction: column;
+      align-items: start;
+      gap: var(--spacing-100);
+    }
+
+    &__time {
+      @include fonts.apply-text-preset("1");
+    }
+  }
+}
+
+@media (min-width: 67.5em) {
+  .dashboard {
+    flex-direction: row;
+
+    &__user-panel {
+      max-width: 255px;
+      max-height: 520px;
+    }
+
+    &__user {
+      flex-direction: column;
+      align-items: start;
+      padding: var(--spacing-400);
+      height: 354px;
+    }
+
+    &__user-img {
+      width: 4.875rem;
+    }
+
+    &__user-name {
+      @include fonts.apply-text-preset("2");
+    }
+
+    &__menu {
+      flex-direction: column;
+      align-items: start;
+      padding:  var(--spacing-400);
+      gap: 21px;
+    }
+
+    &__menu-button {
+      padding: 0;
+    }
+
+    &__grid {
+      gap: var(--spacing-400);
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .time-card {
+    width: 255px;
+
+    &__info {
+      margin-top: 45px;
+      padding: var(--spacing-400);
+    }
+
+    &__header {
+      margin-bottom: var(--spacing-300);
+    }
   }
 }

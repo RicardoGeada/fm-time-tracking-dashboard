@@ -4,7 +4,7 @@
   font-family: "Rubik";
   font-style: normal;
   font-weight: 300;
-  src: url("../assets/fonts/rubik-v30-latin-300.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url("./assets/fonts/rubik-v30-latin-300.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* rubik-regular - latin */
 @font-face {
@@ -12,7 +12,7 @@
   font-family: "Rubik";
   font-style: normal;
   font-weight: 400;
-  src: url("../assets/fonts/rubik-v30-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url("./assets/fonts/rubik-v30-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* rubik-500 - latin */
 @font-face {
@@ -20,7 +20,7 @@
   font-family: "Rubik";
   font-style: normal;
   font-weight: 500;
-  src: url("../assets/fonts/rubik-v30-latin-500.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url("./assets/fonts/rubik-v30-latin-500.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 :root {
   --color-white: #ffffff;
@@ -44,6 +44,7 @@
   --spacing-300: 1.5rem;
   --spacing-400: 2rem;
   --spacing-500: 2.5rem;
+  --spacing-1000: 5rem;
 }
 
 * {
@@ -59,6 +60,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: var(--spacing-1000) var(--spacing-300);
 }
 
 .dashboard {
@@ -137,7 +139,7 @@ main {
   overflow: hidden;
 }
 .time-card--work {
-  background-color: var(--color-orange-300);
+  background: var(--color-orange-300);
 }
 .time-card--play {
   background-color: var(--color-blue-300);
@@ -147,6 +149,9 @@ main {
 }
 .time-card--exercise {
   background-color: var(--color-green-400);
+}
+.time-card--exercise .time-card__tag {
+  top: 0;
 }
 .time-card--social {
   background-color: var(--color-purple-700);
@@ -202,6 +207,81 @@ main {
   font-weight: 400;
   line-height: 1.125rem;
   letter-spacing: 0rem;
+}
+
+@media (min-width: 48em) {
+  .dashboard__grid {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .time-card {
+    width: 220px;
+  }
+  .time-card__info {
+    margin-top: 33px;
+  }
+  .time-card__header {
+    margin-bottom: var(--spacing-200);
+  }
+  .time-card__time-container {
+    flex-direction: column;
+    align-items: start;
+    gap: var(--spacing-100);
+  }
+  .time-card__time {
+    font-size: 3.5rem;
+    font-weight: 300;
+    line-height: 4.125rem;
+    letter-spacing: 0rem;
+  }
+}
+@media (min-width: 67.5em) {
+  .dashboard {
+    flex-direction: row;
+  }
+  .dashboard__user-panel {
+    max-width: 255px;
+    max-height: 520px;
+  }
+  .dashboard__user {
+    flex-direction: column;
+    align-items: start;
+    padding: var(--spacing-400);
+    height: 354px;
+  }
+  .dashboard__user-img {
+    width: 4.875rem;
+  }
+  .dashboard__user-name {
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 2.9375rem;
+    letter-spacing: 0rem;
+  }
+  .dashboard__menu {
+    flex-direction: column;
+    align-items: start;
+    padding: var(--spacing-400);
+    gap: 21px;
+  }
+  .dashboard__menu-button {
+    padding: 0;
+  }
+  .dashboard__grid {
+    gap: var(--spacing-400);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .time-card {
+    width: 255px;
+  }
+  .time-card__info {
+    margin-top: 45px;
+    padding: var(--spacing-400);
+  }
+  .time-card__header {
+    margin-bottom: var(--spacing-300);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

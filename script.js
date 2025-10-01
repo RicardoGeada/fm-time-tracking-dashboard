@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 async function getData() {
   try {
-    const response = await fetch("/data.json");
+    const response = await fetch("./data.json");
     if (!response.ok) {
       console.error("Oops! Something went wrong.");
       return null;
