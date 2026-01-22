@@ -7,8 +7,29 @@ document.addEventListener("DOMContentLoaded", async () => {
     dashboardGrid.innerHTML = createAllTimeCardsHTML(data);
   }
   addButtonEventListeners(dashboardButtons, dashboardGrid);
+  initializeTimePeriod(dashboardButtons, dashboardGrid, getTimePeriod());
 });
 
+/**
+ * Initialize Time Period
+ * - add css class to grid
+ * - select the right button
+ * @param {HTMLButtonElement} dashboardButtons - HTML menu buttons
+ * @param {HTMLDivElement} dashboardGrid - HTML div grid container
+ * @param {string} mode - "daily", "weekly" or "monthly"
+ */
+function initializeTimePeriod(dashboardButtons, dashboardGrid, mode) {
+  dashboardGrid.classList.add(`dashboard__grid--${mode}`);
+  dashboardButtons.forEach((button) => {
+    if (button.getAttribute("data-mode") === mode)
+      button.setAttribute("aria-selected", "true");
+  });
+}
+
+/**
+ * Load data from data.json
+ * @returns data
+ */
 async function getData() {
   try {
     const response = await fetch("./data.json");
@@ -24,6 +45,22 @@ async function getData() {
   }
 }
 
+/**
+ * Get timePeriod from LocalStorage
+ */
+function getTimePeriod() {
+  let mode = localStorage.getItem("timePeriod") ?? "weekly";
+  return mode;
+}
+
+/**
+ * Set timePeriod to localStorage
+ * @param {string} value
+ */
+function setTimePeriod(value) {
+  localStorage.setItem("timePeriod", value);
+}
+
 function createAllTimeCardsHTML(dataArray) {
   let allTimeCardsHTML = "";
   dataArray.forEach((data) => {
@@ -32,6 +69,12 @@ function createAllTimeCardsHTML(dataArray) {
   return allTimeCardsHTML;
 }
 
+
+/**
+ * Create HTML Code for a time card
+ * @param {object} param - {title, timeframes} 
+ * @returns HTML
+ */
 function createTimeCardHTML({ title, timeframes }) {
   const cssClass = title.replaceAll(" ", "-").toLowerCase();
   return `
@@ -74,18 +117,19 @@ function createTimeCardHTML({ title, timeframes }) {
  */
 function addButtonEventListeners(dashboardButtons, dashboardGrid) {
   dashboardButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    dashboardButtons.forEach((btn) =>
-      btn.setAttribute("aria-selected", "false")
-    );
-    button.setAttribute("aria-selected", "true");
-    const mode = button.dataset.mode;
-    dashboardGrid.classList.remove(
-      "dashboard__grid--daily",
-      "dashboard__grid--weekly",
-      "dashboard__grid--monthly"
-    );
-    dashboardGrid.classList.add(`dashboard__grid--${mode}`);
+    button.addEventListener("click", () => {
+      dashboardButtons.forEach((btn) =>
+        btn.setAttribute("aria-selected", "false")
+      );
+      button.setAttribute("aria-selected", "true");
+      const mode = button.dataset.mode;
+      dashboardGrid.classList.remove(
+        "dashboard__grid--daily",
+        "dashboard__grid--weekly",
+        "dashboard__grid--monthly"
+      );
+      dashboardGrid.classList.add(`dashboard__grid--${mode}`);
+      setTimePeriod(mode);
+    });
   });
-});
 }
