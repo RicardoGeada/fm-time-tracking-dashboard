@@ -7,24 +7,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     dashboardGrid.innerHTML = createAllTimeCardsHTML(data);
   }
   addButtonEventListeners(dashboardButtons, dashboardGrid);
-  initializeTimePeriod(dashboardButtons, dashboardGrid, getTimePeriod());
+  setMode(getMode(), dashboardButtons, dashboardGrid);
 });
 
-/**
- * Initialize Time Period
- * - add css class to grid
- * - select the right button
- * @param {HTMLButtonElement} dashboardButtons - HTML menu buttons
- * @param {HTMLDivElement} dashboardGrid - HTML div grid container
- * @param {string} mode - "daily", "weekly" or "monthly"
- */
-function initializeTimePeriod(dashboardButtons, dashboardGrid, mode) {
-  dashboardGrid.classList.add(`dashboard__grid--${mode}`);
-  dashboardButtons.forEach((button) => {
-    if (button.getAttribute("data-mode") === mode)
-      button.setAttribute("aria-selected", "true");
-  });
-}
 
 /**
  * Load data from data.json
@@ -46,21 +31,52 @@ async function getData() {
 }
 
 /**
- * Get timePeriod from LocalStorage
+ * Get Mode from LocalStorage
+ * @returns {"daily" | "weekly" | "monthly"}
  */
-function getTimePeriod() {
-  let mode = localStorage.getItem("timePeriod") ?? "weekly";
+function getMode() {
+  let mode = localStorage.getItem("mode") ?? "weekly";
   return mode;
 }
 
 /**
- * Set timePeriod to localStorage
- * @param {string} value
+ * Sets the active dashboard mode.
+ *
+ * - Updates aria-selected on buttons
+ * - Updates dashboard grid CSS class
+ * - Persists mode in localStorage
+ *
+ * @param {"daily" | "weekly" | "monthly"} mode
+ * @param {NodeListOf<HTMLButtonElement>} dashboardButtons
+ * @param {HTMLElement} dashboardGrid
  */
-function setTimePeriod(value) {
-  localStorage.setItem("timePeriod", value);
+function setMode(mode, dashboardButtons, dashboardGrid) {
+  // buttons
+  dashboardButtons.forEach(btn => {
+    btn.setAttribute(
+      "aria-selected",
+      btn.dataset.mode === mode ? "true" : "false"
+    );
+  });
+
+  // grid classes
+  dashboardGrid.classList.remove(
+    "dashboard__grid--daily",
+    "dashboard__grid--weekly",
+    "dashboard__grid--monthly"
+  );
+  dashboardGrid.classList.add(`dashboard__grid--${mode}`);
+
+  // save to localStorage
+  localStorage.setItem("mode", mode);
 }
 
+
+/**
+ * Creates the HTML string for all time cards.
+ * @param {TimeCardData[]} dataArray
+ * @returns {string}
+ */
 function createAllTimeCardsHTML(dataArray) {
   let allTimeCardsHTML = "";
   dataArray.forEach((data) => {
@@ -71,9 +87,9 @@ function createAllTimeCardsHTML(dataArray) {
 
 
 /**
- * Create HTML Code for a time card
- * @param {object} param - {title, timeframes} 
- * @returns HTML
+ * Creates the HTML for a single time card.
+ * @param {TimeCardData} data
+ * @returns {string}
  */
 function createTimeCardHTML({ title, timeframes }) {
   const cssClass = title.replaceAll(" ", "-").toLowerCase();
@@ -107,29 +123,14 @@ function createTimeCardHTML({ title, timeframes }) {
 }
 
 /**
- * Adds click event listeners to all dashboard menu buttons.
- *
- * When a button is clicked:
- * 1. Sets `aria-selected="false"` for all buttons.
- * 2. Sets `aria-selected="true"` for the clicked button.
- * 3. Updates the dashboard grid's CSS class to match the selected time mode
- *    (daily, weekly, monthly).
+ * Attaches click handlers to dashboard menu buttons.
+ * @param {NodeListOf<HTMLButtonElement>} dashboardButtons
+ * @param {HTMLElement} dashboardGrid
  */
 function addButtonEventListeners(dashboardButtons, dashboardGrid) {
   dashboardButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      dashboardButtons.forEach((btn) =>
-        btn.setAttribute("aria-selected", "false")
-      );
-      button.setAttribute("aria-selected", "true");
-      const mode = button.dataset.mode;
-      dashboardGrid.classList.remove(
-        "dashboard__grid--daily",
-        "dashboard__grid--weekly",
-        "dashboard__grid--monthly"
-      );
-      dashboardGrid.classList.add(`dashboard__grid--${mode}`);
-      setTimePeriod(mode);
+      setMode(button.dataset.mode, dashboardButtons, dashboardGrid);
     });
   });
 }

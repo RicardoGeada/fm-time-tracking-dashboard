@@ -25,15 +25,15 @@
         </div>
       </div>
       <nav class="dashboard__menu" role="tablist">
-        <button class="dashboard__menu-button" role="tab" type="button" data-mode="daily" aria-selected="false">Daily</button>
-        <button class="dashboard__menu-button" role="tab" type="button" data-mode="weekly" aria-selected="false">Weekly</button>
-        <button class="dashboard__menu-button" role="tab" type="button" data-mode="monthly" aria-selected="false">Monthly</button>
+        <button class="dashboard__menu-button" role="tab" type="button" data-mode="daily" aria-selected="false" aria-controls="dashboardGrid">Daily</button>
+        <button class="dashboard__menu-button" role="tab" type="button" data-mode="weekly" aria-selected="false" aria-controls="dashboardGrid">Weekly</button>
+        <button class="dashboard__menu-button" role="tab" type="button" data-mode="monthly" aria-selected="false" aria-controls="dashboardGrid">Monthly</button>
       </nav>
     </aside>
 
-    <div id="dashboardGrid" class="dashboard__grid" role="tabpanel">
+    <section id="dashboardGrid" class="dashboard__grid" role="tabpanel">
       <!-- Time Cards -->
-    </div>
+    </section>
     </div>
   </main>
 </body>
