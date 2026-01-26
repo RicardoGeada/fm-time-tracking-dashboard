@@ -30,8 +30,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [github.com/RicardoGeada/time-tracking-dashboard/](https://github.com/RicardoGeada/time-tracking-dashboard/)
-- Live Site URL: [ricardogeada.github.io/time-tracking-dashboard/](https://ricardogeada.github.io/time-tracking-dashboard/)
+- Solution URL: [github.com/RicardoGeada/fm-time-tracking-dashboard/](https://github.com/RicardoGeada/fm-time-tracking-dashboard/)
+- Live Site URL: [ricardogeada.github.io/fm-time-tracking-dashboard/](https://ricardogeada.github.io/fm-time-tracking-dashboard/)
 
 ## My process
 
