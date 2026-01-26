@@ -119,7 +119,7 @@ main {
   line-height: 1.3125rem;
   letter-spacing: 0rem;
 }
-.dashboard__menu-button[aria-selected=true] {
+.dashboard__menu-button[aria-pressed=true] {
   color: var(--color-white);
 }
 .dashboard__grid {

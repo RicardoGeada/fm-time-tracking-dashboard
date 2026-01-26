@@ -42,7 +42,7 @@ function getMode() {
 /**
  * Sets the active dashboard mode.
  *
- * - Updates aria-selected on buttons
+ * - Updates aria-pressed on buttons
  * - Updates dashboard grid CSS class
  * - Persists mode in localStorage
  *
@@ -54,7 +54,7 @@ function setMode(mode, dashboardButtons, dashboardGrid) {
   // buttons
   dashboardButtons.forEach(btn => {
     btn.setAttribute(
-      "aria-selected",
+      "aria-pressed",
       btn.dataset.mode === mode ? "true" : "false"
     );
   });

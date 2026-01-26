@@ -99,7 +99,7 @@ main {
     color: var(--color-purple-500);
     @include fonts.apply-text-preset("5");
 
-    &[aria-selected="true"] {
+    &[aria-pressed="true"] {
       color: var(--color-white);
     }
   }
